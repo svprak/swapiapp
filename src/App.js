@@ -1,37 +1,21 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import MemeGenerator from './components/MemeGenerator';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loading: false,
-      data: {}
-    };
-  }
+/**
+ * Create 2 new components - Header and MemeGenerator
+ * Header will only display things
+ * MemeGenerator will be calling to an API and holding on to data
+ * Each should be in their own file of the same name
+ */
 
-  componentDidMount() {
-    this.setState({ loading: true })
-    fetch('https://swapi.dev/api/people/1')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.name)
-
-        this.setState({
-          loading: false,
-          data: data
-        })
-      });
-  }
-
-  render() {
-    // const name = this.state.data.map((n) => <li>{n}</li>);
-
-    return (
-      <div>
-        {!this.state.loading ? this.state.data.name : "Loading..."}
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div>
+      <Header />
+      <MemeGenerator />
+    </div>
+  );
 }
+
 export default App;
